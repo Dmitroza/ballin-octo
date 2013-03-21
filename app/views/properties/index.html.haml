@@ -14,6 +14,8 @@
     %th Bathrooms
     %th Bedrooms
     %th Price
+    %th Edit
+    %th Delete
 
   - @properties.each do |property|
     %tr
@@ -30,7 +32,8 @@
       %td= property.bathrooms
       %td= property.bedrooms
       %td= property.list_price
-
+      %td= link_to 'Edit', edit_property_path(property)
+      %td= link_to 'Delete', property, :confirm => 'Are you sure?', :method => :destroy
  
 %br
 
