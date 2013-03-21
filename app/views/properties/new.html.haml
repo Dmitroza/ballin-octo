@@ -1,0 +1,17 @@
+%h1 Hi
+
+= simple_form_for @property do |f|
+	= f.input :zip_code, label: 'ZIP Code'
+	= f.input :city, label: 'City'
+	= f.input :street_name, label: 'Street Name'
+	= f.input :street_suffix, label: 'Street Suffix'
+	= f.input :street_number, label: 'Street Number'
+	= f.input :unit_number, label: 'Unit Number'
+	= f.input :geo_lat, label: 'geo_lat'
+	= f.input :geo_lon, label: 'geo_lon'
+	= f.input :year_built, label: 'year_built'
+	= f.input :approx_sqft, label: 'approx_sqft'
+	= f.input :bathrooms, label: 'bathrooms'
+	= f.input :bedrooms, label: 'bedrooms'
+	= f.input :list_price, label: 'list_price'
+	= f.button :submit

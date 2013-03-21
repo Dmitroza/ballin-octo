@@ -1,5 +1,5 @@
 BallinOcto::Application.routes.draw do
-  get "crud/index"
+  resources :properties
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +50,7 @@ BallinOcto::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'property#index'
+  root :to => 'properties#index'
 
   # See how all your routes lay out with "rake routes"
 
