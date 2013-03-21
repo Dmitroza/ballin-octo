@@ -1,0 +1,38 @@
+%h1 Listing properties
+%table
+  %tr
+    %th ZIP Code
+    %th City
+    %th Street Name
+    %th Street Suffix
+    %th Street Number
+    %th Unit Number
+    %th Latitude
+    %th Longitude
+    %th Year Built
+    %th Approx sqft
+    %th Bathrooms
+    %th Bedrooms
+    %th Price
+
+  - @properties.each do |property|
+    %tr
+      %td= property.zip_code
+      %td= property.city
+      %td= property.street_name
+      %td= property.street_suffix
+      %td= property.street_number
+      %td= property.unit_number
+      %td= property.geo_lat
+      %td= property.geo_lon
+      %td= property.year_built
+      %td= property.approx_sqft
+      %td= property.bathrooms
+      %td= property.bedrooms
+      %td= property.list_price
+
+ 
+%br
+ 
+
+%p Find me in app/views/crud/index.html.haml

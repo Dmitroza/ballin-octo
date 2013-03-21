@@ -9,6 +9,8 @@ gem 'rails', '3.2.13'
 gem 'mysql'
 gem 'execjs'
 gem 'therubyracer'
+gem 'simple_form'
+gem 'haml-rails'
 
 
 # Gems used only for assets and not required
