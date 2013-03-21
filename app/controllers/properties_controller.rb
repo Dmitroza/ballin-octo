@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   def index
   	@properties = Property.all 
   	respond_to do |format|
-			format.html # index.html.erb
+			format.html # index.html.haml
 			format.json { render :json => @properties }
 		end 	 
   end
@@ -13,10 +13,14 @@ class PropertiesController < ApplicationController
 
   def create 
   	@property = Property.new(params[:property])
-		if @property.save
-			redirect_to root_path
-		else
-			render :action => "new"
+		respond_to do |format|
+			if @property.save
+					format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }
+					format.json { head :no_content }
+			else
+				format.html { render :action => "new" }
+				format.json { render :json => @property.errors, :status => :unprocessable_entity }
+			end
 		end
   end	
 
@@ -32,10 +36,9 @@ class PropertiesController < ApplicationController
   def edit
 		@property = Property.find(params[:id])
   end
-  
+
 	def update
 		@property = Property.find(params[:id])
-		
 		respond_to do |format|
 			if @property.update_attributes(params[:property])
 				format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }

@@ -12,6 +12,14 @@ gem 'therubyracer'
 gem 'simple_form'
 gem 'haml-rails'
 
+group :test, :development do
+  gem 'quiet_assets'
+  gem 'thin'  
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'rb-inotify', '~> 0.9'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
