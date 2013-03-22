@@ -1,4 +1,9 @@
 class PropertiesController < ApplicationController
+
+	def show
+		@property = Property.find params[:id]
+	end
+
   def index
   	@properties = Property.all 
   	respond_to do |format|
@@ -15,8 +20,8 @@ class PropertiesController < ApplicationController
   	@property = Property.new(params[:property])
 		respond_to do |format|
 			if @property.save
-					format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }
-					format.json { head :no_content }
+				format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }
+				format.json { head :no_content }
 			else
 				format.html { render :action => "new" }
 				format.json { render :json => @property.errors, :status => :unprocessable_entity }

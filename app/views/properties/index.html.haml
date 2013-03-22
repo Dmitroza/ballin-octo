@@ -1,40 +1,27 @@
-%h1 Listing properties
-%table
-  %tr
-    %th ZIP Code
-    %th City
-    %th Street Name
-    %th Street Suffix
-    %th Street Number
-    %th Unit Number
-    %th Latitude
-    %th Longitude
-    %th Year Built
-    %th Approx sqft
-    %th Bathrooms
-    %th Bedrooms
-    %th Price
-    %th Edit
-    %th Delete
-
-  - @properties.each do |property|
+- model_class = Property
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
     %tr
-      %td= property.zip_code
-      %td= property.city
-      %td= property.street_name
-      %td= property.street_suffix
-      %td= property.street_number
-      %td= property.unit_number
-      %td= property.geo_lat
-      %td= property.geo_lon
-      %td= property.year_built
-      %td= property.approx_sqft
-      %td= property.bathrooms
-      %td= property.bedrooms
-      %td= property.list_price
-      %td= link_to 'Edit', edit_property_path(property)
-      %td= link_to 'Delete', property, :confirm => 'Are you sure?', :method => :delete
- 
-%br
+      %th= "Full Address"
+      %th= model_class.human_attribute_name(:year_built)
+      %th= model_class.human_attribute_name(:bedrooms)
+      %th= model_class.human_attribute_name(:bathrooms)
+      %th= model_class.human_attribute_name(:approx_sqft)
+      %th= model_class.human_attribute_name(:list_price)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @properties.each do |property|
+      %tr
+        %td= link_to property.full_address , property_path(property)
+        %td= property.year_built
+        %td= property.bedrooms
+        %td= property.bathrooms
+        %td= property.approx_sqft
+        %td= property.list_price
+        %td{ :class => 'action_buttons'}
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_property_path(property), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), property_path(property), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to  'New Property', new_property_path
+= link_to t('.new', :default => t("helpers.links.new")), new_property_path, :class => 'btn btn-primary'

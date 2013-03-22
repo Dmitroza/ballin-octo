@@ -7,12 +7,10 @@ gem 'rails', '3.2.13'
 
 #gem 'sqlite3'
 gem 'mysql'
-gem 'execjs'
-gem 'therubyracer'
 gem 'simple_form'
 gem 'haml-rails'
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+
 
 group :test, :development do
   gem 'quiet_assets'
@@ -31,6 +29,8 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer'
+  gem "twitter-bootstrap-rails"
 
   gem 'uglifier', '>= 1.0.3'
 end
