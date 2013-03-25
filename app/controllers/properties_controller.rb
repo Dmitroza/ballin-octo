@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-
+before_filter :authenticate_user!
 	def show
 		@property = Property.find params[:id]
 	end

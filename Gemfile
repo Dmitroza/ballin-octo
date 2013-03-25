@@ -10,6 +10,7 @@ gem 'mysql'
 gem 'simple_form'
 gem 'haml-rails'
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'devise'
 
 
 group :test, :development do
