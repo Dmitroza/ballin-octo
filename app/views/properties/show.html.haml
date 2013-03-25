@@ -54,6 +54,11 @@
   %strong= model_class.human_attribute_name(:list_price) + ':'
   %br
   = @property.list_price
+%p
+  %strong= model_class.human_attribute_name(:owner) + ':'
+  %br
+  = link_to @property.owner.email, user_path(@property.owner)
+
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), properties_path, :class => 'btn'
