@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find params[:id]
+		@properties = Property.where(:owner == @user)
 	end
 
   def index

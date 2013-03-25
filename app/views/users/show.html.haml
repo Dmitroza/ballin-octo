@@ -7,5 +7,11 @@
   %br
   = @user.email
 
+%p
+  %strong= model_class.human_attribute_name(:properties) + ':'
+  %ul
+    - @properties.each do |property|
+      %li= property.full_address
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'  
