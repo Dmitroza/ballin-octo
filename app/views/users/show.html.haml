@@ -11,7 +11,7 @@
   %strong= model_class.human_attribute_name(:properties) + ':'
   %ul
     - @user.properties.each do |property|
-      %li= property.full_address
+      %li= link_to property.full_address, property_path(property)
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'  
