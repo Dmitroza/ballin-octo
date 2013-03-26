@@ -10,7 +10,7 @@
 %p
   %strong= model_class.human_attribute_name(:properties) + ':'
   %ul
-    - @properties.each do |property|
+    - @user.properties.each do |property|
       %li= property.full_address
 
 .form-actions

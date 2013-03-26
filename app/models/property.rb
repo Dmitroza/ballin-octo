@@ -6,4 +6,12 @@ class Property < ActiveRecord::Base
 		[:zip_code, :city, :street_name, :street_suffix, :street_number, :unit_number].map{|m| self.send m }.join(" ")
 		# self.zip_code + " " + self.city + " " + self.street_name + " " + self.street_suffix + " " + self.street_number + " " + self.unit_number
 	end
+
+	def owned_by?(user)
+		owner == user
+	end
+
+	def can_manage_property?(user)
+		 owned_by?(user) || user.role == 'ADMIN'
+	end
 end

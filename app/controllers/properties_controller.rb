@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-before_filter :authenticate_user!
+
 	def show
 		@property = Property.find params[:id]
 	end
@@ -17,10 +17,10 @@ before_filter :authenticate_user!
   end
 
   def create 
-  	@property = Property.new(params[:property])
+  	@property = current_user.properties.new(params[:property])
 		respond_to do |format|
 			if @property.save
-				format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }
+				format.html { redirect_to(root_path, :notice => 'Property was successfully created.') }
 				format.json { head :no_content }
 			else
 				format.html { render :action => "new" }
@@ -31,26 +31,46 @@ before_filter :authenticate_user!
 
   def destroy
 		@property = Property.find(params[:id])
-		@property.destroy
-		respond_to do |format|
-			format.html { redirect_to root_path }
-			format.json { head :no_content }
+		if !@property.can_manage_property?(current_user) 
+			respond_to do |format|
+				format.html { render :nothing => true, :status => :forbidden }
+				format.json  { render :nothing => true, :status => :forbidden }
+			end
+		else
+			@property.destroy
+			respond_to do |format|
+				format.html { redirect_to(root_path, :notice => 'Property was successfully deleted.') }
+				format.json { head :no_content }
+			end
 		end
   end
 
-  def edit
+  def edit  	
 		@property = Property.find(params[:id])
+		if !@property.can_manage_property?(current_user) 
+			respond_to do |format|
+				format.html { render :nothing => true, :status => :forbidden }
+				format.json  { render :nothing => true, :status => :forbidden }
+			end
+		end
   end
 
 	def update
 		@property = Property.find(params[:id])
-		respond_to do |format|
-			if @property.update_attributes(params[:property])
-				format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }
-				format.json { head :no_content }
-			else
-				format.html { render :action => "edit" }
-				format.json { render :json => @property.errors, :status => :unprocessable_entity }
+		if @property.can_manage_property?(current_user)  
+			respond_to do |format|
+				if @property.update_attributes(params[:property])
+					format.html { redirect_to(root_path, :notice => 'Property was successfully updated.') }
+					format.json { head :no_content }
+				else
+					format.html { render :action => "edit" }
+					format.json { render :json => @property.errors, :status => :unprocessable_entity }
+				end
+			end			
+		else
+			respond_to do |format|
+				format.html { render :nothing => true, :status => :forbidden }
+				format.json  { render :nothing => true, :status => :forbidden }
 			end
 		end
 	end
