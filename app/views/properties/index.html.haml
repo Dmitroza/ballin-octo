@@ -13,8 +13,8 @@
       %th= model_class.human_attribute_name(:owner)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
-    - @properties.each do |property|
-      - scheme = property.owned_by?(current_user) ? 'my_property' : ''
+    - @properties.each do |property|      
+      - scheme = property.owned_by?(current_user) ? 'my_property' : (property.belongs_to_friend?(current_user) ? 'friends_property' : '')
       %tr{ :class => scheme }
         %td= link_to property.full_address , property_path(property)
         %td= property.year_built

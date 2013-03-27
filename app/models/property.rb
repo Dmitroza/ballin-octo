@@ -11,6 +11,10 @@ class Property < ActiveRecord::Base
 		owner == user
 	end
 
+	def belongs_to_friend?(user)
+		user.friends.include?(owner)
+	end
+
 	def can_manage_property?(user)
 		 owned_by?(user) || user.role == 'ADMIN'
 	end

@@ -1,6 +1,11 @@
 - model_class = User
+/- session[:return_to] = request.referer
+/- logger.debug 'request.referer:'
+/- logger.debug request.referer
+/- logger.debug session.inspect
+
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human
+  %h1=t '.title', :default => @user.login
 
 %p
   %strong= model_class.human_attribute_name(:email) + ':'
@@ -8,10 +13,40 @@
   = @user.email
 
 %p
+  %strong= model_class.human_attribute_name(:last_sign_in_at) + ':'
+  %br
+  = @user.last_sign_in_at
+
+%p
+  %strong= model_class.human_attribute_name(:current_sign_in_ip) + ':'
+  %br
+  = @user.current_sign_in_ip
+
+%p
   %strong= model_class.human_attribute_name(:properties) + ':'
   %ul
     - @user.properties.each do |property|
       %li= link_to property.full_address, property_path(property)
 
+%div{ :class => 'mutual_friends'}
+  %strong= 'Mutual Friends:'
+  %ul
+    - @user.mutual_friendships.each do |friendship|      
+      %li= (friendship.friend.login + '(' +  link_to("remove", friendship, :method => :delete) +')').html_safe
+
+%div{ :class => 'notmutual_friends'}
+  %strong= 'My Friends:'
+  %ul
+    - @user.notmutual_friendships.each do |friendship|      
+      %li= (friendship.friend.login + '(' +  link_to("remove", friendship, :method => :delete) +')').html_safe
+
+%div{ :class => 'my_subscribers'}
+  %strong= 'My Subscribers:'
+  %ul
+    - @user.my_subscribers.each do |subscriber|
+      %li= (subscriber.login + (@user.can_add_friend?(subscriber) ? '(' +  link_to("Add Friend", friendships_path(:friend_id => subscriber), :method => :post) +')' : '')).html_safe          
+
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'  
+  = link_to 'TODO Change Password', edit_user_password_path(current_user), :class => 'btn'  
