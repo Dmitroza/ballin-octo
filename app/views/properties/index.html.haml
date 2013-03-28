@@ -22,7 +22,7 @@
         %td= property.bathrooms
         %td= property.approx_sqft
         %td= property.list_price
-        %td= link_to property.owner.email, user_path(property.owner) 
+        %td= link_to property.owner.login, user_path(property.owner) 
         %td{ :class => 'action_buttons' }
           - if property.can_manage_property?(current_user) 
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_property_path(property), :class => 'btn btn-mini'

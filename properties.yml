@@ -1,0 +1,51 @@
+---
+- :city: West Montrose
+  :street_number: '5'
+  :street_name: Covered Bridge
+  :street_suffix: Dr
+  :list_price: 959000.0
+- :city: Ariss
+  :street_number: '7177'
+  :street_name: Valley
+  :street_suffix: Rd
+  :list_price: 749900.0
+- :city: Fergus
+  :street_number: '275'
+  :street_name: Union St E
+  :street_suffix: ''
+  :list_price: 529900.0
+- :city: Fergus
+  :street_number: '7017'
+  :street_name: Jones Baseline
+  :street_suffix: ''
+  :list_price: 499900.0
+- :city: Elora
+  :street_number: '91'
+  :street_name: Stanley
+  :street_suffix: Crs
+  :list_price: 539900.0
+- :city: Fergus
+  :street_number: '595'
+  :street_name: St Patrick St E
+  :street_suffix: ''
+  :list_price: 469900.0
+- :city: Meaford
+  :street_number: '265532'
+  :street_name: Sdrd 25
+  :street_suffix: ''
+  :list_price: 399000.0
+- :city: Kitchener
+  :street_number: '50'
+  :street_name: Hudson
+  :street_suffix: Cr
+  :list_price: 349900.0
+- :city: Elora
+  :street_number: '3'
+  :street_name: Joann
+  :street_suffix: Crs
+  :list_price: 364900.0
+- :city: Guelph
+  :street_number: '7'
+  :street_name: Ridgeway
+  :street_suffix: Ave
+  :list_price: 429898.0
