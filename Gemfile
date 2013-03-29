@@ -14,12 +14,15 @@ gem 'devise'
 
 
 group :test, :development do
+  gem 'database_cleaner'
+  gem 'spork'
   gem 'quiet_assets'
   gem 'thin'  
   gem 'rspec-rails'
   gem 'capybara'
   gem 'guard-rspec'
   gem 'rb-inotify', '~> 0.9'
+  gem 'factory_girl_rails'
 end
 
 # Gems used only for assets and not required
