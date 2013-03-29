@@ -61,6 +61,8 @@ Spork.prefork do
       DatabaseCleaner.clean
     end
 
+    config.include Devise::TestHelpers, :type => :controller
+
   end
   def logger
     Rails.logger
