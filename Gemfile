@@ -6,15 +6,19 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 #gem 'sqlite3'
-gem 'mysql'
 gem 'simple_form'
 gem 'haml-rails'
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'devise'
 gem 'thin' 
-gem 'pg'
+gem 'nokogiri'
+
+group :production do
+  gem 'pg'
+end
 
 group :test, :development do
+  gem 'mysql'
   gem 'database_cleaner'
   gem 'spork'
   gem 'quiet_assets'
