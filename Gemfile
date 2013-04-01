@@ -8,7 +8,7 @@ gem 'rails', '3.2.13'
 #gem 'sqlite3'
 gem 'simple_form'
 gem 'haml-rails'
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "less-rails", '2.2.3' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'devise'
 gem 'thin' 
 gem 'nokogiri'
@@ -39,7 +39,7 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-  gem 'therubyracer'
+  gem 'therubyracer', '~> 0.10.2'
 
   gem 'uglifier', '>= 1.0.3'
 end
