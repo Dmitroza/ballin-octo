@@ -12,7 +12,7 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'devise'
 gem 'thin' 
 gem 'nokogiri'
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", '2.1.3'
 
 
 group :production do
