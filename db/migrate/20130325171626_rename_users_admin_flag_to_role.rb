@@ -1,4 +1,4 @@
-2class RenameUsersAdminFlagToRole < ActiveRecord::Migration
+class RenameUsersAdminFlagToRole < ActiveRecord::Migration
   def up
   	rename_column :users, :admin_flag, :role
   	change_column :users, :role, :string, :default => 'REGUSER'
