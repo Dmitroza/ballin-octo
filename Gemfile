@@ -12,6 +12,8 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem 'devise'
 gem 'thin' 
 gem 'nokogiri'
+gem "twitter-bootstrap-rails"
+
 
 group :production do
   gem 'pg'
@@ -38,7 +40,6 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
   gem 'therubyracer'
-  gem "twitter-bootstrap-rails"
 
   gem 'uglifier', '>= 1.0.3'
 end
