@@ -66,6 +66,6 @@ BallinOcto::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   #Should be changed to real url
-  config.action_mailer.default_url_options = { :host => '' }
+  config.action_mailer.default_url_options = { :host => 'http://loony-atoll-9338.herokuapp.com/' }
 
 end
