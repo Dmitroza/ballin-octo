@@ -2,63 +2,64 @@
 .page-header
   %h1=t '.title', :default => @property.full_address
 
-%p
-  %strong= model_class.human_attribute_name(:zip_code) + ':'
-  %br
-  = @property.zip_code
-%p
-  %strong= model_class.human_attribute_name(:city) + ':'
-  %br
-  = @property.city
-%p
-  %strong= model_class.human_attribute_name(:street_name) + ':'
-  %br
-  = @property.street_name
-%p
-  %strong= model_class.human_attribute_name(:street_suffix) + ':'
-  %br
-  = @property.street_suffix
-%p
-  %strong= model_class.human_attribute_name(:street_number) + ':'
-  %br
-  = @property.street_number
-%p
-  %strong= model_class.human_attribute_name(:unit_number) + ':'
-  %br
-  = @property.unit_number
-%p
-  %strong= model_class.human_attribute_name(:geo_lon) + ':'
-  %br
-  = @property.geo_lon
-%p
-  %strong= model_class.human_attribute_name(:geo_lat) + ':'
-  %br
-  = @property.geo_lat
-%p
-  %strong= model_class.human_attribute_name(:year_built) + ':'
-  %br
-  = @property.year_built
-%p
-  %strong= model_class.human_attribute_name(:bedrooms) + ':'
-  %br
-  = @property.bedrooms
-%p
-  %strong= model_class.human_attribute_name(:bathrooms) + ':'
-  %br
-  = @property.bathrooms
-%p
-  %strong= model_class.human_attribute_name(:approx_sqft) + ':'
-  %br
-  = @property.approx_sqft
-%p
-  %strong= model_class.human_attribute_name(:list_price) + ':'
-  %br
-  = @property.list_price
-%p
-  %strong= model_class.human_attribute_name(:owner) + ':'
-  %br
-  = link_to @property.owner.email, user_path(@property.owner)
-
+%div
+  %p
+    %strong= model_class.human_attribute_name(:zip_code) + ':'
+    %br
+    = @property.zip_code
+  %p
+    %strong= model_class.human_attribute_name(:city) + ':'
+    %br
+    = @property.city
+  %p
+    %strong= model_class.human_attribute_name(:street_name) + ':'
+    %br
+    = @property.street_name
+  %p
+    %strong= model_class.human_attribute_name(:street_suffix) + ':'
+    %br
+    = @property.street_suffix
+  %p
+    %strong= model_class.human_attribute_name(:street_number) + ':'
+    %br
+    = @property.street_number
+  %p
+    %strong= model_class.human_attribute_name(:unit_number) + ':'
+    %br
+    = @property.unit_number
+  %p
+    %strong= model_class.human_attribute_name(:geo_lon) + ':'
+    %br
+    = @property.geo_lon
+  %p
+    %strong= model_class.human_attribute_name(:geo_lat) + ':'
+    %br
+    = @property.geo_lat
+  %p
+    %strong= model_class.human_attribute_name(:year_built) + ':'
+    %br
+    = @property.year_built
+  %p
+    %strong= model_class.human_attribute_name(:bedrooms) + ':'
+    %br
+    = @property.bedrooms
+  %p
+    %strong= model_class.human_attribute_name(:bathrooms) + ':'
+    %br
+    = @property.bathrooms
+  %p
+    %strong= model_class.human_attribute_name(:approx_sqft) + ':'
+    %br
+    = @property.approx_sqft
+  %p
+    %strong= model_class.human_attribute_name(:list_price) + ':'
+    %br
+    = @property.list_price
+  %p
+    %strong= model_class.human_attribute_name(:owner) + ':'
+    %br
+    = link_to @property.owner.email, user_path(@property.owner)
+%div{id="map"}
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), properties_path, :class => 'btn'
