@@ -3,7 +3,10 @@
 <head>
   <title>BallinOcto</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
   <%= javascript_include_tag "application" %>
+  <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+  <%= yield :javascript %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -48,7 +51,7 @@
         <% if alert %>
           <p class="alert"><%= alert %></p>
         <% end %>
-				<%= yield %>
+        <%= yield %>
 			</div>
 		</div>
 	</div>

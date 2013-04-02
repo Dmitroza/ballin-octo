@@ -14,7 +14,7 @@ gem 'thin'
 gem 'nokogiri'
 gem "twitter-bootstrap-rails", '2.1.3'
 gem "geocoder"
-gem "leaflet-rails"
+gem "leaflet-ruby"
 
 group :production do
   gem 'pg'

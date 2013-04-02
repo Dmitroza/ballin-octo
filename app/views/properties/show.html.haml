@@ -1,69 +1,88 @@
 - model_class = Property
 .page-header
   %h1=t '.title', :default => @property.full_address
+%div
+  #prop
+    %p
+      %strong= model_class.human_attribute_name(:zip_code) + ':'
+      %br
+      = @property.zip_code
+    %p
+      %strong= model_class.human_attribute_name(:city) + ':'
+      %br
+      = @property.city
+    %p
+      %strong= model_class.human_attribute_name(:street_name) + ':'
+      %br
+      = @property.street_name
+    %p
+      %strong= model_class.human_attribute_name(:street_suffix) + ':'
+      %br
+      = @property.street_suffix
+    %p
+      %strong= model_class.human_attribute_name(:street_number) + ':'
+      %br
+      = @property.street_number
+    %p
+      %strong= model_class.human_attribute_name(:unit_number) + ':'
+      %br
+      = @property.unit_number
+    %p
+      %strong= model_class.human_attribute_name(:geo_lon) + ':'
+      %br
+      = @property.geo_lon
+    %p
+      %strong= model_class.human_attribute_name(:geo_lat) + ':'
+      %br
+      = @property.geo_lat
+    %p
+      %strong= model_class.human_attribute_name(:year_built) + ':'
+      %br
+      = @property.year_built
+    %p
+      %strong= model_class.human_attribute_name(:bedrooms) + ':'
+      %br
+      = @property.bedrooms
+    %p
+      %strong= model_class.human_attribute_name(:bathrooms) + ':'
+      %br
+      = @property.bathrooms
+    %p
+      %strong= model_class.human_attribute_name(:approx_sqft) + ':'
+      %br
+      = @property.approx_sqft
+    %p
+      %strong= model_class.human_attribute_name(:list_price) + ':'
+      %br
+      = @property.list_price
+    %p
+      %strong= model_class.human_attribute_name(:owner) + ':'
+      %br
+      = link_to @property.owner.email, user_path(@property.owner)
 
-#
-  %p
-    %strong= model_class.human_attribute_name(:zip_code) + ':'
-    %br
-    = @property.zip_code
-  %p
-    %strong= model_class.human_attribute_name(:city) + ':'
-    %br
-    = @property.city
-  %p
-    %strong= model_class.human_attribute_name(:street_name) + ':'
-    %br
-    = @property.street_name
-  %p
-    %strong= model_class.human_attribute_name(:street_suffix) + ':'
-    %br
-    = @property.street_suffix
-  %p
-    %strong= model_class.human_attribute_name(:street_number) + ':'
-    %br
-    = @property.street_number
-  %p
-    %strong= model_class.human_attribute_name(:unit_number) + ':'
-    %br
-    = @property.unit_number
-  %p
-    %strong= model_class.human_attribute_name(:geo_lon) + ':'
-    %br
-    = @property.geo_lon
-  %p
-    %strong= model_class.human_attribute_name(:geo_lat) + ':'
-    %br
-    = @property.geo_lat
-  %p
-    %strong= model_class.human_attribute_name(:year_built) + ':'
-    %br
-    = @property.year_built
-  %p
-    %strong= model_class.human_attribute_name(:bedrooms) + ':'
-    %br
-    = @property.bedrooms
-  %p
-    %strong= model_class.human_attribute_name(:bathrooms) + ':'
-    %br
-    = @property.bathrooms
-  %p
-    %strong= model_class.human_attribute_name(:approx_sqft) + ':'
-    %br
-    = @property.approx_sqft
-  %p
-    %strong= model_class.human_attribute_name(:list_price) + ':'
-    %br
-    = @property.list_price
-  %p
-    %strong= model_class.human_attribute_name(:owner) + ':'
-    %br
-    = link_to @property.owner.email, user_path(@property.owner)
+  #map
+  %script showmap_run()
+  = content_for :javascript do 
+    %script{ :type => 'text/javascript' }
+      function showmap_run() {
+      var map = L.map('map').setView([
+      = @property.geo_lat
+      , 
+      = @property.geo_lon
+      ], 16);
+      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
 
-#map
+      L.marker([
+      = @property.geo_lat
+      ,
+      = @property.geo_lon
+      ]).addTo(map)
+      }
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), properties_path, :class => 'btn'
   - if @property.can_manage_property?(current_user) 
     = link_to t('.edit', :default => t("helpers.links.edit")), edit_property_path(@property), :class => 'btn'
     = link_to t('.destroy', :default => t("helpers.links.destroy")), property_path(@property), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+
+
