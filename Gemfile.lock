@@ -67,6 +67,7 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffi (1.5.0)
+    geocoder (1.1.6)
     guard (1.6.2)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
@@ -215,6 +216,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  geocoder
   guard-rspec
   haml-rails
   jquery-rails

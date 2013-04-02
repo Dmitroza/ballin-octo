@@ -13,7 +13,7 @@ gem 'devise'
 gem 'thin' 
 gem 'nokogiri'
 gem "twitter-bootstrap-rails", '2.1.3'
-
+gem "geocoder"
 
 group :production do
   gem 'pg'
