@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', :default => @property.full_address
 
-%div
+#
   %p
     %strong= model_class.human_attribute_name(:zip_code) + ':'
     %br
@@ -59,7 +59,8 @@
     %strong= model_class.human_attribute_name(:owner) + ':'
     %br
     = link_to @property.owner.email, user_path(@property.owner)
-%div{id="map"}
+
+#map
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), properties_path, :class => 'btn'
